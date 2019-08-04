@@ -1,0 +1,39 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+
+group = lib.libraryId
+version = lib.versionName
+
+android {
+    compileSdkVersion lib.targetSdkVersion
+    buildToolsVersion lib.buildToolsVersion
+    defaultConfig {
+        versionCode lib.libVersionCode
+        versionName lib.libVersion
+        minSdkVersion lib.minSdkVersion
+        targetSdkVersion lib.targetSdkVersion
+        consumerProguardFiles('../proguard.pro')
+    }
+    sourceSets {
+        main.java.srcDirs += [
+            './config/java'
+        ]
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
+        }
+    }
+}
+
+dependencies {
+    implementation support.compat
+    implementation support.timber
+    implementation support.okhttp
+    implementation support.gson
+}

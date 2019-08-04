@@ -1,0 +1,49 @@
+
+ext.lib = [
+    libName: 'com.github.albrizy.mobileads',
+    libVersion: '0.1.0',
+    libVersionCode: 1,
+
+    buildToolsVersion: '29.0.1',
+    minSdkVersion: 17,
+    targetSdkVersion: 29,
+]
+
+ext.support = [
+    compat: 'androidx.appcompat:appcompat:1.0.2',
+    material: 'com.google.android.material:material:1.1.0-alpha08',
+    okhttp: 'com.squareup.okhttp3:okhttp:3.14.0',
+    gson: 'com.google.code.gson:gson:2.8.5',
+    timber: 'com.jakewharton.timber:timber:4.7.1',
+    admob: 'com.google.android.gms:play-services-ads:17.2.0',
+    facebook: 'com.facebook.android:audience-network-sdk:5.3.0-beta2',
+    startapp: 'com.startapp:inapp-sdk:3.10.1'
+
+]
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+        maven {url 'https://jitpack.io'}
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.4.2'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven {url 'https://jitpack.io'}
+        flatDir {
+            dirs '../libs'
+        }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

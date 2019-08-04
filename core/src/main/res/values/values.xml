@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="config_url"/>
+    <string name="config_key">AKfycbyWYphCuaB5BAo7AkoIBzzeD9hqojoQRGgq3tJcxXles1AoDAc</string>
+    <string name="config_token">aHR0cHM6Ly9zY3JpcHQuZ29vZ2xlLmNvbS9tYWNyb3Mvcy8lcy9leGVjPw==</string>
+
+    <integer name="ad_interstitial_show_after_clicks">4</integer>
+
+</resources>
