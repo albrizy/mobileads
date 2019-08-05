@@ -16,7 +16,7 @@ ext.support = [
     gson: 'com.google.code.gson:gson:2.8.5',
     timber: 'com.jakewharton.timber:timber:4.7.1',
     admob: 'com.google.android.gms:play-services-ads:17.2.0',
-    facebook: 'com.facebook.android:audience-network-sdk:5.3.0-beta2',
+    facebook: 'com.facebook.android:audience-network-sdk:5.4.1',
     startapp: 'com.startapp:inapp-sdk:3.10.1'
 
 ]
