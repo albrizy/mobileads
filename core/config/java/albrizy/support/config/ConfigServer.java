@@ -6,5 +6,5 @@ public class ConfigServer {
 
     @SerializedName("enabled") public boolean error;
     @SerializedName("title") public String errorTitle;
-    @SerializedName("dec") public String errorDesc;
+    @SerializedName("desc") public String errorDesc;
 }
