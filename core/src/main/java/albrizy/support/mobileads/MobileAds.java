@@ -104,19 +104,23 @@ public final class MobileAds {
         this.config = c;
         try {
             AdConfig config = c.adConfig;
-            Logger.ads().d("Preparing AdConfig: %d", config.code);
-            for (Map.Entry<String, Ad> v : config.ads.entrySet()) {
-                Ad ad = v.getValue();
-                Logger.ads().d("Initializing Ad: %s", ad.type);
-                String clazz = null;
-                try {
-                    clazz = AdUtil.resolve(ad.type, "Adapter");
-                    Class.forName(clazz)
-                            .getMethod("initialize", Activity.class, String.class, boolean.class)
-                            .invoke(null, ref.get(), ad.id, client.isDebug());
-                } catch (Exception e) {
-                    Logger.ads().w("Failed to initialize %s", clazz);
+            if (AdConfig.isReady(c)) {
+                Logger.ads().d("Preparing AdConfig: %d", config.code);
+                for (Map.Entry<String, Ad> v : config.ads.entrySet()) {
+                    Ad ad = v.getValue();
+                    Logger.ads().d("Initializing Ad: %s", ad.type);
+                    String clazz = null;
+                    try {
+                        clazz = AdUtil.resolve(ad.type, "Adapter");
+                        Class.forName(clazz)
+                                .getMethod("initialize", Activity.class, String.class, boolean.class)
+                                .invoke(null, ref.get(), ad.id, client.isDebug());
+                    } catch (Exception e) {
+                        Logger.ads().w("Failed to initialize %s", clazz);
+                    }
                 }
+            } else {
+                Logger.ads().w("AdConfig is not ready. code: %d", config.code);
             }
         } catch (Exception ignored) {}
         finally {

@@ -22,7 +22,6 @@ public class AdConfig {
     }
 
     public static boolean isReady(@Nullable AdConfig config) {
-        int index = (int) Math.floor(Math.random() * 1);
         return config != null
                 && config.ads != null
                 && config.adUnits != null
